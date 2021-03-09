@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "247283551729",
+    "project_id": "timetracker-udemycourse-andrea",
+    "storage_bucket": "timetracker-udemycourse-andrea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247283551729:android:b5b613c19af5611c8b8850",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247283551729-35gfoap1j1lp5pa0v9o9gsvjuunrhouh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_app",
+            "certificate_hash": "e1f7f8812af5198b5b90163f29ad34953145f814"
+          }
+        },
+        {
+          "client_id": "247283551729-98p0biq6b4kp2nvto7k8on4kh7c4ukae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0g4LV4B-_l44mQ2PnmLjCASbrFAphE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247283551729-98p0biq6b4kp2nvto7k8on4kh7c4ukae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
