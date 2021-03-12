@@ -4,41 +4,32 @@ import 'package:flutter_app/app/home_page.dart';
 import 'package:flutter_app/app/sign_in/sign_in_page.dart';
 import 'package:flutter_app/services/auth_base.dart';
 
-class LandingPage extends StatefulWidget {
+class LandingPage extends StatelessWidget {
   const LandingPage({Key key, @required this.auth}) : super(key: key);
-
   final AuthBase auth;
 
   @override
-  _LandingPageState createState() => _LandingPageState();
-}
-
-class _LandingPageState extends State<LandingPage> {
-  User _user;
-
-  @override
-  void initState() {
-    super.initState();
-    _updateUser(widget.auth.currentUser);
-  }
-
-  void _updateUser(User user) {
-    setState(() {
-      _user = user;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (_user == null) {
-      return SignInPage(
-        onSignIn: _updateUser,
-        auth: widget.auth,
-      );
-    }
-    return Homepage(
-      onSignOut: () => _updateUser(null),
-      auth: widget.auth,
+    return StreamBuilder<User>(
+      stream: auth.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.active) {
+          final user = snapshot.data;
+          if (user == null) {
+            return SignInPage(
+              auth: auth,
+            );
+          }
+          return Homepage(
+            auth: auth,
+          );
+        }
+        return Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
     );
   }
 }
