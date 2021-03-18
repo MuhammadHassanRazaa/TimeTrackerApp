@@ -4,9 +4,7 @@ import 'package:flutter_app/app/sign_in/form_submit_button.dart';
 import 'package:flutter_app/common_widgets/custom_raised_button.dart';
 
 class EmailSignInForm extends StatelessWidget {
-  void _submit(){
-
-  }
+  void _submit() {}
   List<Widget> _buildChildren() {
     return [
       TextField(
@@ -14,6 +12,7 @@ class EmailSignInForm extends StatelessWidget {
           labelText: 'Email',
           hintText: 'email@domain.com',
         ),
+        onChanged: (va) => print(va),
       ),
       SizedBox(height: 8.0),
       TextField(
