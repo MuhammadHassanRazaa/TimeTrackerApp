@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/common_widgets/alert_dialog.dart';
 import 'package:flutter_app/services/auth_base.dart';
 
 class Homepage extends StatelessWidget {
@@ -14,6 +15,17 @@ class Homepage extends StatelessWidget {
     }
   }
 
+  Future<void> _confirmSignOut(BuildContext context) async {
+    if (await showAlertDialog(context,
+            tittle: 'Logout',
+            content: 'Are you Sure that you want to Logout?',
+            defaultActionText: 'Yes',
+            cancelActionText: 'No') ==
+        true) {
+      _signOut();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +37,7 @@ class Homepage extends StatelessWidget {
               'Logout',
               style: TextStyle(color: Colors.white, fontSize: 18.0),
             ),
-            onPressed: _signOut,
+            onPressed: () => _confirmSignOut(context),
           ),
         ],
       ),
