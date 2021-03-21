@@ -15,5 +15,6 @@ class SignInButton extends CustomRaisedButton {
           ),
           color: color,
           onPressed: onPressed,
+          backgroundColor: color,
         );
 }

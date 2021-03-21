@@ -1,9 +1,11 @@
 import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/sign_in/form_submit_button.dart';
 import 'package:flutter_app/app/sign_in/validator.dart';
 import 'package:flutter_app/common_widgets/alert_dialog.dart';
+import 'package:flutter_app/common_widgets/exception_alert_dialog.dart';
 import 'package:flutter_app/services/auth_base.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +28,15 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   bool _submitted = false;
   bool _isLoading = false;
 
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   void _submit() async {
     setState(() {
       _submitted = true;
@@ -39,14 +50,12 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         await auth.createUserWithEmailAndPassword(_email, _password);
       }
       Navigator.of(context).pop();
-    } catch (e) {
-      if (Platform.isIOS) {
-      } else {
-        showAlertDialog(context,
-            tittle: 'Sign in Failed',
-            content: e.toString(),
-            defaultActionText: 'OK');
-      }
+    } on FirebaseAuthException catch (e) {
+      showExceptionAlertDialog(
+        context,
+        tittle: 'Sign in Failed',
+        exception: e,
+      );
     } finally {
       setState(() {
         _isLoading = false;
