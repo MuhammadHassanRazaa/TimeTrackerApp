@@ -26,10 +26,18 @@ class CustomRaisedButton extends StatelessWidget {
             RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(borderRadius),
+
               ),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all<Color>(color),
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
+              if (states.contains(MaterialState.disabled))
+                return Colors.grey;
+              return color;
+            },
+          ),
+
         ),
         onPressed: onPressed,
       ),
