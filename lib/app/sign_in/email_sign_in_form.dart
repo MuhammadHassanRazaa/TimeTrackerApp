@@ -1,10 +1,8 @@
-import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app/sign_in/form_submit_button.dart';
 import 'package:flutter_app/app/sign_in/validator.dart';
-import 'package:flutter_app/common_widgets/alert_dialog.dart';
 import 'package:flutter_app/common_widgets/exception_alert_dialog.dart';
 import 'package:flutter_app/services/auth_base.dart';
 import 'package:provider/provider.dart';
