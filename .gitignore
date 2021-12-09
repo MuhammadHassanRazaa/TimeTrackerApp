@@ -298,4 +298,8 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
+# Firebase configuration files
+ios/Runner/GoogleService-Info.plist
+android/app/google-services.json
+
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,flutter,vscode
