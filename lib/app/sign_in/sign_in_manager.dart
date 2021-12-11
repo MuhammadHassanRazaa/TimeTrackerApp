@@ -3,19 +3,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/services/auth_base.dart';
 
-class SignInBloc {
-  SignInBloc({@required this.isLoading, @required this.auth});
+class SignInManager {
+  SignInManager({@required this.isLoading, @required this.auth});
   final AuthBase auth;
   final ValueNotifier<bool> isLoading;
-
-
 
   Future<User> _signIn(Future<User> Function() signInMethod) async {
     try {
       isLoading.value = true;
       return await signInMethod();
     } catch (e) {
-     isLoading.value = false;
+      isLoading.value = false;
       rethrow;
     }
   }
