@@ -5,6 +5,7 @@ import 'package:flutter_app/app/sign_in/form_submit_button.dart';
 import 'package:flutter_app/common_widgets/exception_alert_dialog.dart';
 import 'package:flutter_app/services/auth_base.dart';
 import 'package:provider/provider.dart';
+import 'package:social_login_buttons/social_login_button.dart';
 
 class EmailSignInFormChangeNotifier extends StatefulWidget {
   EmailSignInFormChangeNotifier({@required this.model});
@@ -78,9 +79,14 @@ class _EmailSignInFormChangeNotifierState
       SizedBox(height: 8.0),
       _buildPasswordTextField(),
       SizedBox(height: 8.0),
-      FormSubmitButton(
-        onPressed: model.canSubmit ? _submit : null,
+      SocialLoginButton(
+        buttonType: SocialLoginButtonType.generalLogin,
+        backgroundColor: Colors.indigo,
+        disabledbackgroundColor: Colors.grey,
         text: model.primaryButtonText,
+        fontSize: 20,
+        height: 44,
+        onPressed: model.canSubmit ? _submit : null,
       ),
       SizedBox(height: 8.0),
       TextButton(

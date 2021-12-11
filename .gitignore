@@ -303,3 +303,4 @@ ios/Runner/GoogleService-Info.plist
 android/app/google-services.json
 
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,flutter,vscode
+/android/app/google-services.json
